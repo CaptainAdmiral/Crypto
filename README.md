@@ -1,0 +1,1 @@
+This is a toy app designed to provide a more explicit definition of the protocols behind my blockchain alternative. It is NOT supposed to be an implementation of the network, only an emulation of it for the purposes of helping people understand the protocols and testing security vulnerabilities.
