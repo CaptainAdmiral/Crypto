@@ -9,9 +9,6 @@ class ServerProtocol(AbstractProtocol):
     def weight() -> float:
         return 0
 
-    def update(self) -> None:
-        pass
-
     def request_net_connection(self, net_con: NetConnection):
         self.net_connections.append(net_con)
         net_con.open()
