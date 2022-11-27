@@ -8,10 +8,9 @@ class AbstractProtocol(ABC):
 
     @abstractmethod
     def weight() -> float:
-        pass
-
-    @abstractmethod
-    def update(self) -> None:
+        '''The weight with which this protocol will be chosen to populate the network.
+        
+        The standard protocol has a weight of 1.0'''
         pass
 
     @abstractmethod
