@@ -30,7 +30,7 @@ class NetConnection():
         self._header = header
         self.is_open = False
         self.in_waiting = False
-        self._inverse = inverse
+        self._inverse: NetConnection | None = inverse
 
         if not self._inverse:
             self._inverse = NetConnection(self._other_node, self._node, self._header, inverse=self) 
@@ -48,7 +48,7 @@ class NetConnection():
     def __exit__(self):
         self.close()
 
-    def get_inverse(self) -> Self:
+    def get_inverse(self) -> 'NetConnection':
         """Returns the inverse net connection to this net connection
 
         Raises:
@@ -115,9 +115,6 @@ class NetConnection():
         if not self.is_open:
             raise self.NetConnectionClosedException("Cannot write to a closed NetConnection!")
 
-        if not self._inverse:
-            raise self.NoInverseException()
-
         try:
             task = asyncio.create_task(self._write_to_inverse(out))
             self._network_trafic_tasks.add(task)
@@ -128,7 +125,7 @@ class NetConnection():
 
     async def _write_to_inverse(self, out: str):
         await asyncio.sleep(np.random.normal(NETWORK_DELAY, NETWORK_DELAY*NETWORK_DELAY_VARIABILITY))
-        self._inverse.receive_packet(str(out))
+        self.get_inverse().receive_packet(str(out))
 
     def receive_packet(self, pkt: str):  
         self.in_waiting = True

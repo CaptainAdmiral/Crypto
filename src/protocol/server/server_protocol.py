@@ -6,6 +6,7 @@ class ServerProtocol(AbstractProtocol):
     def __init__(self):
         self.net_connections = []
 
+    @staticmethod
     def weight() -> float:
         return 0
 

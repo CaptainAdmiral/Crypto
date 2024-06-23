@@ -5,7 +5,8 @@ class AbstractProtocol(ABC):
 
     def __init__(self, node):
         self._node = node
-
+    
+    @staticmethod
     @abstractmethod
     def weight() -> float:
         '''The weight with which this protocol will be chosen to populate the network.

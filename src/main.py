@@ -5,7 +5,7 @@ from network_emulator import network
 from script import run
 
 def register_protocols():
-    protocol_factory.register_protocol(StdProtocol)
+    protocol_factory.register_protocols(StdProtocol)
 
 def initialize_network():
     pass

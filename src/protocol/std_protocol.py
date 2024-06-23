@@ -1,21 +1,27 @@
+from dataclasses import dataclass
 from network_emulator import NetConnection
 from protocol import AbstractProtocol
+from protocol.dialogue.abstract_dialogue import Dialogue
 
-class ext_node():
-
-    def __init__(self, timestamp, address):
-        self.timestamp = timestamp
-        self.address = address
+@dataclass
+class PublicNodeData():
+    '''The public data about the node as appears on the node list.'''
+    address: int
+    public_key: str
+    timestamp: float
 
 class StdProtocol(AbstractProtocol):
+
+    dialogueRegistry: dict[str, tuple[Dialogue, Dialogue]] = {}
 
     def __init__(self, node):
         super().__init__(node)
         self.public_key = None
         self.private_key = None
-        self.node_list: ext_node = []
         self.net_connections: list[NetConnection] = []
-
+        self.node_list: list[PublicNodeData] = []
+    
+    @staticmethod
     def weight() -> float:
         return 1.0
 
