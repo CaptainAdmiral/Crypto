@@ -1,7 +1,6 @@
 from network_emulator.net_connection import*
 from protocol import*
 from protocol import protocol_factory
-from network_emulator import network
 from script import run
 
 def register_protocols():

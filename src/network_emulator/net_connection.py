@@ -1,5 +1,4 @@
 import asyncio
-from typing import Self
 from node import Node
 from enum import Enum
 from settings import NETWORK_DELAY, NETWORK_DELAY_VARIABILITY

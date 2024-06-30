@@ -2,9 +2,9 @@ from dialogue import Dialogue, DialogueEnum, register_dialogue
 
 
 dialogue1 = Dialogue(DialogueEnum.REQUEST_NODE_LIST)
-dialogue1.send_header()
+dialogue1.send_header().expect(lambda data, state, protocol: data)
 
-dialuge2 = Dialogue(DialogueEnum.REQUEST_NODE_LIST)
-dialuge2.accept_header()
+dialogue2 = Dialogue(DialogueEnum.REQUEST_NODE_LIST)
+dialogue2.accept_header().do(lambda data, state, protocol: data)
 
-register_dialogue(dialogue1, dialuge2)
+register_dialogue(dialogue1, dialogue2)
