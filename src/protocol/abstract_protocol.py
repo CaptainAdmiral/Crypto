@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from network_emulator import NetConnection
+import network_emulator as ne
 
 class AbstractProtocol(ABC):
 
-    def __init__(self, node):
+    def __init__(self, node: ne.Node):
         self._node = node
     
     @staticmethod
@@ -15,5 +15,5 @@ class AbstractProtocol(ABC):
         pass
 
     @abstractmethod
-    def request_net_connection(self, net_con: NetConnection):
+    def request_net_connection(self, net_con: ne.NetConnection):
         pass
